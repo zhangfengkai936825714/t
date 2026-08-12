@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<p id="t">还需点5次</p>
+<button onclick="c()">点我</button>
+<script>
+let n=0,o=0;
+history.pushState(null,null,l=location.href);
+onpopstate=()=>!o&&history.pushState(null,null,l);
+function c(){n++;document.getElementById('t').innerText=n>=5?(o=1,'已解锁'):`还需点${5-n}次`;}
+</script>
