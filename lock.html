@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<div style="text-align:center;padding:30px">
+<p id="txt">还需点5次</p>
+<button onclick="fn()">点我</button>
+</div>
+<script>
+let count=0;
+let unlock=false;
+history.pushState(1,null,location.href);
+
+window.onpopstate=function(){
+	if(!unlock){
+		history.pushState(1,null,location.href);
+		document.getElementById("txt").innerText=`还需点${5‑count}次`;
+	}
+}
+
+function fn(){
+	count++;
+	if(count>=5){
+		unlock=true;
+		document.getElementById("txt").innerText="✅解锁，可以返回";
+	}else{
+		document.getElementById("txt").innerText=`还需点${5‑count}次`;
+	}
+}
+</script>
